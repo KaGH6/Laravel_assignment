@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+/* TOPページ：createボタン */
+#ADD {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#ADD .add-create {
+    padding: 0.3em 0.7em;
+    color: #5CB85C;
+    border: 1px solid #5CB85C;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+#ADD .add-create:hover {
+    text-decoration: none;
+    background-color: #5CB85C;
+    color: #fff;
+}
