@@ -20,8 +20,9 @@ Laravel でブログサイトを作成しました。
 ##
 <a id="anchor2"></a>
 ### 2. View：見栄えの実装
-1. Viewsフォルダの中に、Home, Create, Edit Article, Article, Sign in, Sign up の計6ページを作成。
-2．[RealWorld](https://github.com/gothinkster/realworld/tree/main) のドキュメントを参考に、HTML, CSSで見栄えを実装。
+
+1. Viewsフォルダの中に、Home、CreateEdit Article, Article, Sign in, Sign up の計6ページを作成。
+2. [RealWorld](https://github.com/gothinkster/realworld/tree/main) のドキュメントを参考に、HTML, CSSで見栄えを実装。
 3. 各ページに共通する要素（Head, Header や Footer など）を layout.blade.php にまとめ、Views > components ディレクトリで管理。
 4. 各ページに layout.blade.php の内容が反映されるようタグ付け。
 5. public > add.css を作成し、ホーム画面の Create ボタンの見栄えを調整。
