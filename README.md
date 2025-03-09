@@ -1,66 +1,76 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 課題：ブログサイト作成
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Laravel でブログサイトを作成しました。
 
-## About Laravel
+## 作成内容
+目次：
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. [Model：データベース作成](#anchor1)
+2. [View：見栄えの実装](#anchor2)
+3. [Controller：機能の実装](#anchor3)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+##
+<a id="anchor1"></a>
+### 1. Model：データベース作成
+1. 2025_03_03_101036_create_homes_table.phpを作成。
+2. 記事のタイトル(title)、概要(articleAbout)、内容(article)、タグ(tags)、投稿日時、投稿者名(user_name) のデータを管理できるよう設定。
+3. 記事にuser_idを持たせるよう設定。
 
-## Learning Laravel
+##
+<a id="anchor2"></a>
+### 2. View：見栄えの実装
+1. Viewsフォルダの中に、Home, Create, Edit Article, Article, Sign in, Sign up の計6ページを作成。
+2．[RealWorld](https://github.com/gothinkster/realworld/tree/main) のドキュメントを参考に、HTML, CSSで見栄えを実装。
+3. 各ページに共通する要素（Head, Header や Footer など）を layout.blade.php にまとめ、Views > components ディレクトリで管理。
+4. 各ページに layout.blade.php の内容が反映されるようタグ付け。
+5. public > add.css を作成し、ホーム画面の Create ボタンの見栄えを調整。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+各Viewファイルについて
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+| ファイル名        | 概要                                                                                                    | 
+| :---------------- | ------------------------------------------------------------------------------------------------------- | 
+| home.blade.php    | ホーム画面。ブログの一覧が閲覧できる。                                                                  | 
+| create.blade.php  | 記事の新規作成画面。ホーム画面のcreateボタンからアクセス可。ここで作成した記事がホームに反映される。    | 
+| article.blade.php | ホーム画面で選択した特定の記事を表示する画面。                                                          | 
+| edit.blade.php    | 記事の編集画面。ホーム画面で投稿者名をクリック、もしくはarticle画面のEdit Articleボタンからアクセス可。 | 
+| signUp.blade.php  | ユーザーの新規登録を行う画面。登録後、ログイン状態でホーム画面に遷移する。                              | 
+| signIn.blade.php  | ユーザーのログイン画面。ログイン後、ホーム画面に遷移する。画面右上のLogoutボタンでサインアウト可。      | 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+##
+<a id="anchor3"></a>
+### 3. Controller：機能の実装
+#### ルーティング (web.php)：
+- 各6ページ分のルーティング処理を記述。
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### コントローラー：
 
-## Contributing
+- HomeController.php：
+home.blade.php, create.blade.php, edit.blade.php, article.blade.php の動作を制御するコードを記述。
+indexメソッド、createメソッド、showメソッド、editメソッド、storeメソッド、updateメソッド、destroyメソッドを定義。
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| メソッド名      | 概要                                                                              | 
+| --------------- | --------------------------------------------------------------------------------- | 
+| indexメソッド   | ホーム画面で記事を５件ずつ取得するよう設定。                                      | 
+| createメソッド  | create.blade.php の処理内容をルートファイルに渡す処理を記述。                     | 
+| showメソッド    | 記事のidに対応するHomeモデルのデータを取得し、article.blade.phpに返す処理を記述。 | 
+| editメソッド    | 記事のidに対応するHomeモデルのデータを取得し、edit.blade.phpに返す処理を記述。    | 
+| storeメソッド   | 入力された記事の情報を保存し、保存後にホーム画面へ遷移するよう設定。              | 
+| updateメソッド  | 記事の変更内容を保存し、保存後にホーム画面へ遷移するよう設定。                    | 
+| destroyメソッド | 指定された記事を削除し、削除後にホーム画面へ遷移するよう設定。                    | 
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<br>
 
-## Security Vulnerabilities
+- AuthController.php：
+signOut.blade.php, signIn.blade.php の動作を制御するコードを記述。
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+| メソッド名       | 概要                                                                                                   | 
+| ---------------- | ------------------------------------------------------------------------------------------------------ | 
+| registerメソッド | 新規登録されたユーザー情報を保存するよう設定。                                                         | 
+| signInメソッド   | メールアドレスとパスワードの入力でログインできる処理を記述。ログイン後にホーム画面へ遷移するよう設定。 | 
+| Logoutメソッド   | ログアウトできる処理を記述。ログアウト後にホーム画面へ遷移するよう設定。                               | 
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

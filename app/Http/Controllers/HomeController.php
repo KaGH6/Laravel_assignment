@@ -65,7 +65,7 @@ class HomeController extends Controller {
 
         $home->save(); //指定されたidのデータを保存
         return redirect("/");
-        // redirect保存した後のルートの選択
+        //redirect保存した後のルートの選択
     }
 
     // delete

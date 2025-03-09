@@ -12,7 +12,7 @@ class AuthController extends Controller {
     public function register(Request $request) {
         $auth = new User(); //インスタンス化、新しいデータを保存する
         $auth->name = $request->name;
-        $auth->email = $request->email; //入力されたタイトルを$authに代入
+        $auth->email = $request->email; //入力されたメールアドレスを$authに代入
         $auth->password = Hash::make($request->password); //パスワードをハッシュ化(暗号化)
         $auth->save();
 
