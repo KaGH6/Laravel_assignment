@@ -49,7 +49,7 @@ Laravel でブログサイトを作成しました。
 
 #### コントローラー：
 
-- HomeController.php：
+- ##### HomeController.php：
 home.blade.php, create.blade.php, edit.blade.php, article.blade.php の動作を制御するコードを記述。
 indexメソッド、createメソッド、showメソッド、editメソッド、storeメソッド、updateメソッド、destroyメソッドを定義。
 
@@ -66,8 +66,8 @@ indexメソッド、createメソッド、showメソッド、editメソッド、s
 
 <br>
 
-- AuthController.php：
-signOut.blade.php, signIn.blade.php の動作を制御するコードを記述。
+- ##### AuthController.php：
+signOut.blade.php, signIn.blade.php の動作を制御するコードを記述。registerメソッド、signInメソッド、Logoutメソッドを定義。
 
 | メソッド名       | 概要                                                                                                   | 
 | ---------------- | ------------------------------------------------------------------------------------------------------ | 
